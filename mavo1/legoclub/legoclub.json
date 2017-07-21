@@ -7,6 +7,14 @@
 			"description": "Fast vehicle designed around a long travel front suspension and a robust live axle in the rear.",
 			"partcount": "882",
 			"tags": "technics,automobile,remotecontrol"
+		},
+		{
+			"name": "Rooikat XL",
+			"image": "http://gonzaga.ogbuji.net/~osi/elements/rooikatxl.png",
+			"creator": "ChocolatEinstein",
+			"description": "A",
+			"partcount": "1157",
+			"tags": "techincs,military,remotecontrol"
 		}
 	]
 }
