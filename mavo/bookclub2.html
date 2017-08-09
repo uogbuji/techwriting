@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The poetry book club</title>
+
+  <link rel="stylesheet" href="https://get.mavo.io/mavo.css"/>
+  <script src="https://get.mavo.io/mavo.js"></script>
+</head>
+<body>
+  <main mv-app="poetryclub" mv-storage="local">
+    <h1>The poetry book club</h1>
+
+    <p>
+      <label>Title: </label>
+      <span property="title">Ndewo, Colorado</span>
+    </p>
+    <img property="cover" style="height: [height * 2 + 200]px;"
+     src="http://gonzaga.ogbuji.net/~uche/lit/2013/ndewo-cover-small.jpg" alt="cover" />
+
+     <div>
+       <input type="range" property="height" />
+     </div>
+
+    <p style="background-color: [if(days(meeting - $today) &lt; 7, yellow, white)];">
+      <label>Meeting date: </label>
+      <time property="meeting" datetime="2017-10-09">9 Oct 2017</time>
+    </p>
+
+    <a href="mailto:poclub@example.com?subject=[uppercase(title)]">Contact us about this meeting</a>
+
+  </main>
+</body>
+</html>

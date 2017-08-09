@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The Intrepid LEGO Club</title>
+
+  <link rel="stylesheet" href="https://get.mavo.io/mavo.css"/>
+  <script src="https://get.mavo.io/mavo.js"></script>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.min.css">
+  <link rel="stylesheet" href="legoclub.css">
+</head>
+<body>
+  <main mv-app="legoclub" mv-storage="https://github.com/uogbuji/ibmdw/mavo/legoclub" mv-plugins="tinymce">
+    <h1>
+    	<span>The Intrepid LEGO Club</span>
+      <div><a href="lego.html"><img src="http://gonzaga.ogbuji.net/~osi/elements/rooikatsplash.png" alt="LEGO link image" height="236"/></a></div>
+    </h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Image</th>
+          <th>Creator</th>
+          <th>Description</th>
+          <th>Part count</th>
+          <th>Tags</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr mv-multiple>
+          <td><span property="name">Skeleton Trophy Truck</span></td>
+          <td><img property="image" src="https://m.rebrickable.com/media/cache/f7/f4/f7f4d3add5ada3b2e65e177aefb4dd4c.jpg" alt=""></td>
+          <td><span property="creator">ChocolatEinstien</span></td>
+          <td><p property="description" class="tinymce">Fast vehicle designed around a long travel front suspension and a robust live axle in the rear.</p></td>
+          <td><span property="partcount">882</span></td>
+          <td><span property="tags">technics,automobile,remotecontrol</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </main>
+</body>
+</html>
