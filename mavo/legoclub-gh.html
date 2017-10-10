@@ -13,11 +13,20 @@
   <link rel="stylesheet" href="legoclub.css">
 </head>
 <body>
-  <main mv-app="legoclub" mv-storage="https://github.com/uogbuji/ibmdw/mavo/legoclub" mv-plugins="tinymce">
-    <h1>
-    	<span>The Intrepid LEGO Club</span>
-      <div><a href="lego.html"><img src="http://gonzaga.ogbuji.net/~osi/elements/rooikatsplash.png" alt="LEGO link image" height="236"/></a></div>
-    </h1>
+  <main mv-app="legoclub" mv-storage="https://github.com/uogbuji/ibmdw/mavo/legoclub"
+        mv-plugins="tinymce">
+    <header>
+    	<h1>The Intrepid LEGO Club</h1>
+      <img property="headerimage"
+        src="https://github.com/uogbuji/ibmdw/raw/master/mavo/rooikatsplash.png"
+        alt="LEGO link image"/>
+    </header>
+
+    <p property="summary" class="tinymce">
+    	Some people think of <strong>LEGO</strong> as kid stuff, but many enthusiastic
+      adults disagree. Here is a showcase of some of the creative, original LEGO
+      projects by our members.
+    </p>
 
     <table>
       <thead>
@@ -31,11 +40,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr mv-multiple>
+
+        <tr mv-multiple class="[if($url.tag and search(tags, $url.tag) = -1, hidden)]">
           <td><span property="name">Skeleton Trophy Truck</span></td>
-          <td><img property="image" src="https://m.rebrickable.com/media/cache/f7/f4/f7f4d3add5ada3b2e65e177aefb4dd4c.jpg" alt=""></td>
+          <td><img property="image"
+src="https://m.rebrickable.com/media/cache/f7/f4/f7f4d3add5ada3b2e65e177aefb4dd4c.jpg"
+alt="Snapshot"></td>
           <td><span property="creator">ChocolatEinstien</span></td>
-          <td><p property="description" class="tinymce">Fast vehicle designed around a long travel front suspension and a robust live axle in the rear.</p></td>
+          <td><p property="description" class="tinymce">
+            Fast vehicle designed around a long travel front suspension and a robust
+            live axle in the rear.</p></td>
           <td><span property="partcount">882</span></td>
           <td><span property="tags">technics,automobile,remotecontrol</span></td>
         </tr>

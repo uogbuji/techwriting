@@ -16,8 +16,9 @@
   <main mv-app="legoclub" mv-storage="local" mv-plugins="tinymce">
     <header>
     	<h1>The Intrepid LEGO Club</h1>
-      <img src="http://gonzaga.ogbuji.net/~osi/elements/rooikatsplash.png"
-        alt="LEGO link image" height="236"/>
+      <img property="headerimage"
+        src="https://github.com/uogbuji/ibmdw/raw/master/mavo/rooikatsplash.png"
+        alt="LEGO link image"/>
     </header>
 
     <p property="summary" class="tinymce">
@@ -38,7 +39,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr mv-multiple>
+
+        <tr mv-multiple class="[if($url.tag and search(tags, $url.tag) = -1, hidden)]">
           <td><span property="name">Skeleton Trophy Truck</span></td>
           <td><img property="image"
 src="https://m.rebrickable.com/media/cache/f7/f4/f7f4d3add5ada3b2e65e177aefb4dd4c.jpg"

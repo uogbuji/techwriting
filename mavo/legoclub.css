@@ -1,4 +1,4 @@
-h1 img {
+header img {
     height: 263px;
 }
 
@@ -6,3 +6,6 @@ td img {
     height: 120px;
 }
 
+.hidden{
+    display: none;
+}
