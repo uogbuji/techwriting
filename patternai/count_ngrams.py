@@ -5,6 +5,8 @@ import pprint
 from nltk.util import ngrams
 from nltk.tokenize import RegexpTokenizer
 
+#Set up a tokenizer which only captures lowercase letters and spaces
+#This requires that input has been preprocessed to lowercase all letters
 TOKENIZER = RegexpTokenizer("[a-z ]")
 
 
@@ -25,6 +27,8 @@ def count_ngrams(input_fp, frequencies, order, buffer_size=1024):
     text = input_fp.read(buffer_size).lower()
     #Loop over the file while there is text to read
     while text:
+        #This step is needed to collapse runs of space characters into one
+        text = ' '.join(text.split())
         spans = TOKENIZER.span_tokenize(text)
         tokens = (text[begin : end] for (begin, end) in spans)
         for bigram in ngrams(tokens, order):
@@ -48,6 +52,6 @@ if __name__ == '__main__':
     #Uncomment the following line to display all the resulting frequencies
     #in readable format
     #pprint.pprint(frequencies)
-    #Uncomment just the 20 most common bigrams and their frequencies
+    #Print just the 20 most common N-grams and their frequencies
     #in readable format
     pprint.pprint(frequencies.most_common(20))
