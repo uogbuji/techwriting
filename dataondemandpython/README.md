@@ -21,3 +21,11 @@ Published on June 22, 2018
 **Learn how to dramatically improve the performance of software with input/output processing**
 
 Much of the data in modern big data applications comes from the web or databases. You need to write code to process this at scale, but you don't want everything to grind to a halt in the process. Python 3 introduced a system for cooperative multitasking, which alleviates this problem, using asynchronous coroutines. Asynchronous coroutines build on similar concepts to generators. They are objects created from special functions which can be suspended and resumed. They make it possible to break down complex and inefficient processing into simple tasks that cooperate to maximize trade-offs between CPU and input/output. Learn these core techniques following a simple sequence of examples.
+
+
+# Resources
+
+* [awesome-asyncio](https://github.com/timofurrer/awesome-asyncio), "curated list of awesome Python asyncio frameworks, libraries, software and resources"
+  * Does not include:
+  * [Guillotina](https://guillotina.readthedocs.io/en/latest/), "Python AsyncIO REST Resource Application Server designed for high-performance, horizontally scaling solutions." (Uche hasn't tried this)
+* [Used to be a list of 3rd party asyncio libraries & other notes that got archived with the entire repository](https://github.com/python/asyncio/wiki/ThirdParty)
