@@ -13,6 +13,8 @@ correlation between letters by using matrix-based models.
 
 First published 20 March 2018
 
+See also: [article on developer.ibm.com](https://developer.ibm.com/articles/cc-patterns-artificial-intelligence-part1/)
+
 [Part 2: Word analysis and N-grams in a variety of practical applications](https://www.ibm.com/developerworks/library/cc-patterns-artificial-intelligence-part2/)
 
 Build on the concept of N-grams of sequential letters to look at N-grams of words, and the
@@ -22,6 +24,8 @@ text suitable for general-purpose language modeling tasks.
 
 First published 18 April 2018
 
+See also: [article on developer.ibm.com](https://developer.ibm.com/articles/cc-patterns-artificial-intelligence-part2/)
+
 [Part 3: Using Markov Chains to generate language from letter correlation matrices and N-grams](https://www.ibm.com/developerworks/library/cc-patterns-artificial-intelligence-part3/)
 
 Now that you have learned how to compile statistics of letter correlation and word correlation in
@@ -30,3 +34,5 @@ how to write programs that create sequences of letters or words based on randoml
 transitions to complete N-grams.
 
 First published 7 May 2018
+
+See also: [article on developer.ibm.com](https://developer.ibm.com/articles/cc-patterns-artificial-intelligence-part3/)
