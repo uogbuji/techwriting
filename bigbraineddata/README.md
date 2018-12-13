@@ -12,5 +12,4 @@ First published 27 September 2017
 
 Learn how to apply the iterative software development lifecycle (SDLC) to data for artificial intelligence (AI) and cognitive applications. Improve your systems for sourcing and assessment of data sets, and controlling dimensionality, all the way through the evaluation that feeds each iteration in the cycle.
 
-First published October 2018
-
+First published 2 October 2017
