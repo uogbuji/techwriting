@@ -1,4 +1,4 @@
-# Big-brained data
+# [Big-brained data](https://developer.ibm.com/series/big-brained-data/)
 
 A tutorial in two parts, by [Uche Ogbuji](http://uche.ogbuji.net)
 
