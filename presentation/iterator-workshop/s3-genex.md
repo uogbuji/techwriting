@@ -92,12 +92,3 @@ tenletters = ( chr(ord('a')+i) for i in range(10) )
 ' and '.join(tenletters)
 ```
 
-```
-
-```
-
-
-```
-
-```
-

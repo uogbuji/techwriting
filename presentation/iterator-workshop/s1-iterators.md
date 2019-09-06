@@ -47,7 +47,9 @@ except StopIteration as e:
 
 
 ```
-
+r = random_jacksonserator()
+for word in r:
+    print(word)
 ```
 
 ```
