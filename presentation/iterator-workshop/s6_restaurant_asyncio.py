@@ -1,3 +1,4 @@
+import random
 import asyncio
 
 async def get_menus():
@@ -27,13 +28,13 @@ async def serve_table(tabnum):
     await get_menus()
     print(f'Welcome. Please sit at table {tabnum}. Here are your menus')
     order = await get_order()
-    print('Table {tabnum} what will you be having today?')
+    print(f'Table {tabnum} what will you be having today?')
     await prepare_order(order)
-    print('Table {tabnum} here is your meal:', order)
+    print(f'Table {tabnum} here is your meal:', order)
     await eat()
-    print('Table {tabnum} here is your check')
+    print(f'Table {tabnum} here is your check')
     await get_payment()
-    print('Thanks for visiting us! (table {tabnum} )')
+    print(f'Thanks for visiting us! (table {tabnum} )')
 
 # Create tasks/coroutines for three tables
 gathered_coroutines = asyncio.gather(
