@@ -36,7 +36,7 @@ async def serve_table(tabnum):
     print('Thanks for visiting us! (table {tabnum} )')
 
 # Create tasks/coroutines for three tables
-coros = asyncio.gather(
+gathered_coroutines = asyncio.gather(
     serve_table(1), serve_table(2), serve_table(3)
 )
 loop = asyncio.get_event_loop()
