@@ -31,10 +31,11 @@ async def progress_indicator(delay, loop):
             await asyncio.sleep(delay)
         except asyncio.CancelledError:
             break
-        #Print a dot, with no newline afterward & force the output to appear immediately
+        # Print a dot, with no newline afterward & force the output to appear immediately
         print('.', end='', flush=True)
-        #Check if this is the last remaining task, and exit if so
-        num_active_tasks = [ task for task in asyncio.Task.all_tasks(loop)
+        # Check if this is the last remaining task, and exit if so
+        # If you are on Python 3.6 you must use asyncio.Task.all_tasks(loop)
+        num_active_tasks = [ task for task in asyncio.all_tasks(loop)
                                   if not task.done() ]
         if len(num_active_tasks) == 1:
             break
@@ -51,10 +52,10 @@ async def serve_table(table_number):
     await get_payment()
     print('Thanks for visiting us! (table', table_number, ')')
 
-#asyncio uses event loops to manage its operation
+# asyncio uses event loops to manage its operation
 loop = asyncio.get_event_loop()
 
-#Create coroutines for three tables
+# Create coroutines for three tables
 gathered_coroutines = asyncio.gather(
     serve_table(1),
     serve_table(2),
@@ -62,8 +63,8 @@ gathered_coroutines = asyncio.gather(
     progress_indicator(0.5, loop)
 )
 
-#This is the entry from synchronous to asynchronous code. It will block
-#Until the coroutine passed in has completed
+# This is the entry from synchronous to asynchronous code. It will block
+# Until the coroutine passed in has completed
 loop.run_until_complete(gathered_coroutines)
-#We're done with the event loop
+# We're done with the event loop
 loop.close()
