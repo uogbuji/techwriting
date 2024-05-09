@@ -15,3 +15,5 @@ Hope this helps someone else. Only after all this fiddling did I learn from Came
 Incidentally, part of my process of figuring out the REST API was peeking in Langchain's `SearxSearchWrapper` code. I guess a timely reminder: Never look in Langchain's code 🫣😂.
 
 Cameron mentioned that SearXNG offers access to cached versions of lots of pages. I do wonder whether they rely on upstream for that. If so, [it might be a brief ride](https://news.ycombinator.com/item?id=39198329). Would be interesting to look in on [Dweb efforts to decentralize archive.org](https://archive.org/details/DWeb-Archive), then integrate into SearXNG.
+
+Note: Also came across [YaCy](https://yacy.net/), which is neat, but somthing different. A search engine in its own right (though decentralized), rather than a meta of existing engines.
