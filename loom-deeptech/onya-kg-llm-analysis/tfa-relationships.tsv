@@ -1,0 +1,14 @@
+# nodes
+id	type	name	description
+0	Person	Okonkwo	A renowned wrestler and self-made man of Umuofia
+1	Person	Unoka	A gentle flutist, and a debtor
+2	Person	Nwoye	
+3	Person	Ezinma	
+4	Place	Umuofia	
+
+# edges
+source	label	target
+0	children	2
+0	children	3
+0	homeLocation	4
+1	children	0

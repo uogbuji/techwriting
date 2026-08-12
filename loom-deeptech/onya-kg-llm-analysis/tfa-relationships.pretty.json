@@ -1,0 +1,56 @@
+{
+  "document": "https://example.org/books/things-fall-apart",
+  "nodebase": "https://example.org/books/things-fall-apart/",
+  "schema": "https://schema.org/",
+  "nodes": [
+    {
+      "id": "Okonkwo",
+      "type": "Person",
+      "name": "Okonkwo",
+      "description": "A renowned wrestler and self-made man of Umuofia"
+    },
+    {
+      "id": "Unoka",
+      "type": "Person",
+      "name": "Unoka",
+      "description": "A gentle flutist, and a debtor"
+    },
+    {
+      "id": "Nwoye",
+      "type": "Person",
+      "name": "Nwoye"
+    },
+    {
+      "id": "Ezinma",
+      "type": "Person",
+      "name": "Ezinma"
+    },
+    {
+      "id": "Umuofia",
+      "type": "Place",
+      "name": "Umuofia"
+    }
+  ],
+  "edges": [
+    {
+      "source": "Okonkwo",
+      "label": "children",
+      "target": "Nwoye"
+    },
+    {
+      "source": "Okonkwo",
+      "label": "children",
+      "target": "Ezinma"
+    },
+    {
+      "source": "Okonkwo",
+      "label": "homeLocation",
+      "target": "Umuofia"
+    },
+    {
+      "source": "Unoka",
+      "label": "children",
+      "target": "Okonkwo"
+    }
+  ]
+}

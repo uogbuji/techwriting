@@ -1,0 +1,31 @@
+lang = "en"
+
+# Baseline prompts for Equiano knowledge-graph extraction. Copy this file to try a variant
+# (e.g. extract-v2.loom.toml) and run `assess_model.py --prompt-file extract-v2.loom.toml` to A/B it.
+
+[kg-extract]
+_m = ["doc_iri", "nodebase", "chunk"]
+_ = """You are extracting a knowledge graph from a document excerpt, as Onya Literate (a Markdown format). Follow these rules exactly:
+
+- Begin with this docheader, verbatim:
+
+# @docheader
+
+* @document: {doc_iri}
+* @nodebase: {nodebase}
+* @schema: https://schema.org/
+
+- One heading block per distinct entity, in the form `# Identifier [Type]`, where Type is one of Person, Organization, Place. Concrete example: `# RobertKing [Person]`.
+- The Identifier is a stable HumpCase rendering of the entity's fullest name in THIS excerpt, with no spaces or punctuation. This applies to EVERY entity, including ships, places, and organizations (Robert King -> RobertKing, Charming Sally -> CharmingSally, New York -> NewYork). Do not write the literal words "Identifier" or "NodeId"; use the actual name. Reuse the same Identifier for the same entity everywhere it appears.
+- `* name: <full name>` on every node. Add `* jobTitle:`, `* description:` when the text supports them.
+- CRITICAL: capture relationships BETWEEN entities as edges, not just prose. Whenever the text says one person owns, buys, sells, serves, befriends, fathers, marries, travels with, or works for another, emit an edge: `* owns -> ThatPerson`, `* knows -> ThatPerson`, `* parent -> ThatPerson`, `* memberOf -> ThatOrg`. Prefer edges between two Person or Organization nodes; do not put a relationship only in a description. Every edge target must be a node block in your output.
+- Nodes are NAMED individuals (Person), organizations (Organization), and places (Place) only. Skip ships, dates, and bare roles or common nouns (a slave, the master, the king, African brethren), and ignore subscriber lists and tables of contents.
+- Use only information from the excerpt. No preamble, no code fences: output raw Onya Literate only.
+
+Excerpt:
+{chunk}"""
+
+[kg-repair]
+_m = ["error"]
+_ = """Your output failed to parse: {error}
+Fix the problem and output the corrected, complete Onya Literate only."""

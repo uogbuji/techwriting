@@ -1,0 +1,45 @@
+lang = "en"
+
+# Experiment v2: same as extract.loom.toml, but with a harder push on RELATIONSHIPS — the recurring
+# failure mode across models is under-linking (both people extracted, no edge between them). This
+# variant (a) widens the relation vocabulary to cover the ones that get missed (teaching, employment,
+# joint command, friendship, kinship), (b) makes connecting interacting people mandatory, and (c) adds
+# an explicit self-check pass before finishing.
+# Run: python assess_model.py MODEL --prompt-file extract-v2.loom.toml
+
+[kg-extract]
+_m = ["doc_iri", "nodebase", "chunk"]
+_ = """You are extracting a knowledge graph from a document excerpt, as Onya Literate (a Markdown format). Follow these rules exactly:
+
+- Begin with this docheader, verbatim:
+
+# @docheader
+
+* @document: {doc_iri}
+* @nodebase: {nodebase}
+* @schema: https://schema.org/
+
+- One heading block per distinct entity, in the form `# Identifier [Type]`, where Type is one of Person, Organization, Place. Concrete example: `# RobertKing [Person]`.
+- The Identifier is a stable HumpCase rendering of the entity's fullest name in THIS excerpt, with no spaces or punctuation. This applies to EVERY entity, including ships, places, and organizations (Robert King -> RobertKing, Charming Sally -> CharmingSally, New York -> NewYork). Do not write the literal words "Identifier" or "NodeId"; use the actual name. Reuse the same Identifier for the same entity everywhere it appears.
+- `* name: <full name>` on every node. Add `* jobTitle:`, `* description:` when the text supports them.
+- MOST IMPORTANT RULE — RELATIONSHIPS: a graph is only useful if its people are connected. For EVERY pair of named people (or a person and an organization) who interact in ANY way in this excerpt, you MUST emit an edge between them — never leave a relationship only in a description. Interactions include: buying, selling, owning, or freeing a person; serving, working for, or employing someone; teaching or being taught; commanding, sailing with, or serving alongside; befriending; family ties; meeting or corresponding. Use a fitting label and always point at another node block:
+    * owns -> ThatPerson
+    * worksFor -> ThatPerson
+    * employs -> ThatPerson
+    * teacherOf -> ThatPerson
+    * colleague -> ThatPerson      (e.g. two captains on the same voyage)
+    * knows -> ThatPerson          (met, corresponded, befriended)
+    * parent -> ThatPerson / child -> ThatPerson
+    * memberOf -> ThatOrg
+  When in doubt between a description and an edge, emit BOTH. Prefer edges between two Person or Organization nodes.
+- Nodes are NAMED individuals (Person), organizations (Organization), and places (Place) only. Skip ships, dates, and bare roles or common nouns (a slave, the master, the king, African brethren), and ignore subscriber lists and tables of contents.
+- Before you finish, re-read your node list: for every two people the excerpt shows interacting, confirm there is an edge between them; add any you missed.
+- Use only information from the excerpt. No preamble, no code fences: output raw Onya Literate only.
+
+Excerpt:
+{chunk}"""
+
+[kg-repair]
+_m = ["error"]
+_ = """Your output failed to parse: {error}
+Fix the problem and output the corrected, complete Onya Literate only."""

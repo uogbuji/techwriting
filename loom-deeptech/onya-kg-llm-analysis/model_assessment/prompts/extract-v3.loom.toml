@@ -1,0 +1,35 @@
+lang = "en"
+
+# Experiment v3: the baseline prompt (extract.loom.toml) with TWO minimal changes, both motivated by
+# what v2 got wrong. v2's heavy "most important rule / emit both / self-check" framing backfired: the
+# model reified relationships as bogus `[Relationship]` NODES instead of edges (recall 10->7). So v3
+# keeps the light baseline and only: (a) adds two relation labels for the commonly-missed cases
+# (teaching, co-command), and (b) forbids the [Relationship]-node failure mode outright.
+# Run: python assess_model.py MODEL --prompt-file extract-v3.loom.toml
+
+[kg-extract]
+_m = ["doc_iri", "nodebase", "chunk"]
+_ = """You are extracting a knowledge graph from a document excerpt, as Onya Literate (a Markdown format). Follow these rules exactly:
+
+- Begin with this docheader, verbatim:
+
+# @docheader
+
+* @document: {doc_iri}
+* @nodebase: {nodebase}
+* @schema: https://schema.org/
+
+- One heading block per distinct entity, in the form `# Identifier [Type]`, where Type is one of Person, Organization, Place. Concrete example: `# RobertKing [Person]`.
+- The Identifier is a stable HumpCase rendering of the entity's fullest name in THIS excerpt, with no spaces or punctuation (Robert King -> RobertKing, Charming Sally -> CharmingSally). Do not write the literal words "Identifier" or "NodeId"; use the actual name. Reuse the same Identifier for the same entity everywhere it appears.
+- `* name: <full name>` on every node. Add `* jobTitle:`, `* description:` when the text supports them.
+- CRITICAL: capture relationships BETWEEN entities as edges, not just prose. Whenever the text says one person owns, buys, sells, serves, works for, teaches, commands or sails with, befriends, fathers, or marries another, emit an edge: `* owns -> ThatPerson`, `* knows -> ThatPerson`, `* teacherOf -> ThatPerson`, `* colleague -> ThatPerson`, `* parent -> ThatPerson`, `* memberOf -> ThatOrg`. A relationship is an EDGE between two existing node blocks — never create a node whose type is Relationship, or a node that stands for the relationship itself. Prefer edges between two Person or Organization nodes; do not put a relationship only in a description. Every edge target must be a node block in your output.
+- Nodes are NAMED individuals (Person), organizations (Organization), and places (Place) only. Skip ships, dates, and bare roles or common nouns (a slave, the master, the king, African brethren), and ignore subscriber lists and tables of contents.
+- Use only information from the excerpt. No preamble, no code fences: output raw Onya Literate only.
+
+Excerpt:
+{chunk}"""
+
+[kg-repair]
+_m = ["error"]
+_ = """Your output failed to parse: {error}
+Fix the problem and output the corrected, complete Onya Literate only."""
